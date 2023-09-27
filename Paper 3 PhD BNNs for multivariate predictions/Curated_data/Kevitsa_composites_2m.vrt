@@ -1,0 +1,16 @@
+<OGRVRTDataSource>
+    <OGRVRTLayer name="Kevitsa_composites_2m">
+        <SrcDataSource>C:/Users/lin236/OneDrive - CSIRO/Minerals4D/Projects/SandS_DS/Kevitsa_data/Composites/Kevitsa_composites_2m.vrt</SrcDataSource>
+        <GeometryType>wkbPoint</GeometryType>
+        <LayerSRS></LayerSRS>
+        <GeometryField encoding="PointFromColumns" x="X" y="Y"/>
+        <Field name="Sample Number" type="Integer"/>
+        <Field name="Name" type="String"/>
+        <Field name="Depth From" type="Real"/>
+        <Field name="Depth To" type="Real"/>
+        <Field name="X" type="Real"/>
+        <Field name="Y" type="Real"/>
+        <Field name="Z" type="Real"/>
+        <Field name="Length" type="Real"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>
