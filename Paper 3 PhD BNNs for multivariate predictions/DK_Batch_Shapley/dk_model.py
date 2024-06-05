@@ -6,6 +6,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
 class DeepKriging(nn.Module):
     def __init__(self, input_size):
         super(DeepKriging, self).__init__()
@@ -46,8 +47,8 @@ class DeepKrigingTrainer:
 
 
     def train_model(self, model, optimizer, criterion):
-        self.train_losses = []  # To store training losses during training
-        self.test_losses = []   # To store test losses during training
+        self.train_losses = []  
+        self.test_losses = []   
         # Training loop
         for step in range(601):
             pre = model(self.x_train)
@@ -82,7 +83,6 @@ class DeepKrigingTrainer:
             kf = KFold(n_splits=num_folds, shuffle=True, random_state=42)
 
             
-            # Perform k-fold cross-validation
             for fold, (train_index, test_index) in enumerate(kf.split(self.deposit_data)):
                 self.train_data, self.test_data = self.deposit_data.iloc[train_index], self.deposit_data.iloc[test_index]
 
@@ -103,7 +103,7 @@ class DeepKrigingTrainer:
                 self.train_model(self.model2, optimizer, criterion)
                 self.test_predictions_fold = self.model2(self.x_test).detach().numpy().flatten()
 
-                            # Store metrics for this fold
+                    # Store metrics for this fold
                 self.test_predictions_fold = self.model2(self.x_test).detach().numpy().flatten()
                 self.test_mse_list.append(mean_squared_error(self.y_test, self.test_predictions_fold))
                 self.test_mae_list.append(mean_absolute_error(self.y_test, self.test_predictions_fold))
